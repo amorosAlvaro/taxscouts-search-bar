@@ -7,7 +7,6 @@ function booksReducer(books = initialBooks, action) {
 
   switch (action.type) {
     case actionTypes.LOAD_BOOKS:
-
       nextBooks = action.books;
       return nextBooks;
     default:
