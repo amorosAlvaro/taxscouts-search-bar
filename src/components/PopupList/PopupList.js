@@ -1,18 +1,19 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Item from './Item';
+import { BooksNav, BooksNavList } from './PopupList.styles';
 
 function PopupList() {
   const books = useSelector((store) => store.books);
 
   return (
-    <nav className="books-nav">
-      <ul className="books-nav__list">
+    <BooksNav>
+      <BooksNavList>
         {books.map((book) => (
           <Item key={book.authorweb} book={book} />
         ))}
-      </ul>
-    </nav>
+      </BooksNavList>
+    </BooksNav>
   );
 }
 

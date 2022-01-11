@@ -1,11 +1,17 @@
+import { useSelector } from 'react-redux';
 import Header from './components/Header/Header';
+import PopupList from './components/PopupList/PopupList';
+import './App.css';
 
 function App() {
+  const books = useSelector((store) => store.books);
+  console.log(books);
+
   return (
-    <div className="App">
-      <h1>Hello world</h1>
+    <main className="App">
       <Header />
-    </div>
+      {books.length > 2 ? <PopupList /> : <h3>PopUp List</h3>}
+    </main>
   );
 }
 

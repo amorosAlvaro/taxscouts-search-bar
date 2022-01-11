@@ -4,7 +4,11 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import searchIcon from '../../assets/magnifying-glass.svg';
-import getBooks from '../../redux/actions/action.creators';
+import { getBooks, resetBooks } from '../../redux/actions/action.creators';
+import {
+  SearchContainer, SearchContainerForm, SearchContainerFormInput,
+  SearchContainerFormDelete, SearchContainerFormSubmit
+} from './SearchBar.styles';
 
 function Search() {
   const [input, setInput] = useState('');
@@ -12,49 +16,40 @@ function Search() {
   const dispatch = useDispatch();
 
   const handleChange = (e, input) => {
-    if (input.length) {
+    if (input.length > 1) {
       e.preventDefault();
       dispatch(getBooks(input));
+    } else {
+      dispatch(resetBooks());
     }
   };
 
   return (
-    <section className="search-container">
-      <form
+    <SearchContainer>
+      <SearchContainerForm
         onChange={(e) => handleChange(e, input)}
-        className="search-container-form"
       >
-        <label
-          className="search-container-form__label"
-          htmlFor="search-container-form__input"
-        >
-          Search
-        </label>
-        <input
+        <SearchContainerFormInput
           value={input}
           autoComplete="off"
           onChange={(e) => setInput(e.target.value)}
-          className="search-container-form__input"
-          id="search-container-form__input"
         />
         {input.length > 0 && (
-          <button
+          <SearchContainerFormDelete
             onClick={() => setInput('')}
-            type="button"
-            className="search-container-form__delete"
           >
             X
-          </button>
+          </SearchContainerFormDelete>
         )}
-        <button className="search-container-form__submit">
+        <SearchContainerFormSubmit>
           <img
             src={searchIcon}
             className="search-container-form__icon"
             alt="Magnifying glass icon"
           />
-        </button>
-      </form>
-    </section>
+        </SearchContainerFormSubmit>
+      </SearchContainerForm>
+    </SearchContainer>
   );
 }
 
