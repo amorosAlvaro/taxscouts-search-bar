@@ -8,7 +8,7 @@ import { getBooks, resetBooks } from '../../redux/actions/action.creators';
 import {
   SearchContainer, SearchContainerForm, SearchContainerFormInput,
   SearchContainerFormDelete, SearchContainerFormSubmit
-} from './searchBar.styles';
+} from './SearchBar.styles';
 
 function Search() {
   const [input, setInput] = useState('');
@@ -17,11 +17,9 @@ function Search() {
 
   const handleChange = (e, input) => {
     if (input.length > 1) {
-      console.log('input:', input.length);
       e.preventDefault();
       dispatch(getBooks(input));
     } else {
-      console.log('else statement:', input);
       dispatch(resetBooks());
     }
   };

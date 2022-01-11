@@ -2,6 +2,10 @@
 /* eslint-disable no-debugger */
 import React from 'react';
 // import fetchImageAxios from '../../helpers/fetchImageAxios';
+import {
+  AmazonLink, BooksNavListItem, BooksNavItemContainer, BooksNavItemInfo, BooksNavInfoHeader,
+  BooksNavItemImg
+} from './PopupList.styles';
 
 function Item({ book }) {
   const bookIsbn = book.titles.isbn.$;
@@ -15,26 +19,23 @@ function Item({ book }) {
   // });
 
   return (
-    <a
-      className="amazon-link"
+    <AmazonLink
       href={amazonLink}
       target="_blank"
-      aria-label="amazon"
-      rel="noreferrer"
     >
-      <li className="recipes-nav__list-item">
-        <div className="recipes-nav__link-container">
-          <img
+      <BooksNavListItem>
+        <BooksNavItemContainer>
+          <BooksNavItemImg
             src="https://m.media-amazon.com/images/I/81rypU+zd6L._AC_UY327_FMwebp_QL65_.jpg"
             alt={`${book.titleweb} book`}
             className="recipes-nav__item-img"
           />
-          <div className="recipes-nav__item-info">
-            <p className="recipes-nav__info-header">{book.titleweb}</p>
-          </div>
-        </div>
-      </li>
-    </a>
+          <BooksNavItemInfo>
+            <BooksNavInfoHeader className="recipes-nav__info-header">{book.titleweb}</BooksNavInfoHeader>
+          </BooksNavItemInfo>
+        </BooksNavItemContainer>
+      </BooksNavListItem>
+    </AmazonLink>
   );
 }
 
