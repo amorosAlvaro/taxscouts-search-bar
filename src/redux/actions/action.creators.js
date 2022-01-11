@@ -15,4 +15,8 @@ function getBooks(query) {
   };
 }
 
-export default getBooks;
+function resetBooks() {
+  return { type: actionTypes.RESET_BOOKS };
+}
+
+export { getBooks, resetBooks };

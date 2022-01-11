@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import searchIcon from '../../assets/magnifying-glass.svg';
-import getBooks from '../../redux/actions/action.creators';
+import { getBooks, resetBooks } from '../../redux/actions/action.creators';
 import {
   SearchContainer, SearchContainerForm, SearchContainerFormInput,
   SearchContainerFormDelete, SearchContainerFormSubmit
@@ -16,9 +16,13 @@ function Search() {
   const dispatch = useDispatch();
 
   const handleChange = (e, input) => {
-    if (input.length) {
+    if (input.length > 1) {
+      console.log('input:', input.length);
       e.preventDefault();
       dispatch(getBooks(input));
+    } else {
+      console.log('else statement:', input);
+      dispatch(resetBooks());
     }
   };
 

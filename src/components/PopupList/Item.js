@@ -5,8 +5,10 @@ import React from 'react';
 
 function Item({ book }) {
   const bookIsbn = book.titles.isbn.$;
+
   const amazonLink = `https://www.amazon.com/s?i=stripbooks&rh=p_66%3A${bookIsbn}&s=relevanceexprank&Adv-Srch-Books-Submit.x=21&Adv-Srch-Books-Submit.y=7&unfiltered=1&ref=sr_adv_b`;
 
+  // const amazonLink2 = `https://www.amazon.com/s?k=${bookIsbn}&i=stripbooks-intl-ship&crid=3LIIXXF9V26CK&sprefix=${bookIsbn}%2Cstripbooks-intl-ship%2C272&ref=nb_sb_noss`;
   // const testLink = getWeb(amazonLink).then(() => {
   //   console.log(assignValue);
   //   return assignValue;
@@ -20,21 +22,34 @@ function Item({ book }) {
       aria-label="amazon"
       rel="noreferrer"
     >
-      <div className="item-container">
-        <img
-          className="item-container__image"
-          alt="Book cover"
-          src="getWeb(amazonLink).then(() => assignValue)"
-        />
-        <div className="item-container__info">
-          <p className="item-container__info-title">{book.titleweb}</p>
-          <p className="item-container__info-author">{book.authorweb}</p>
-          <p className="item-container__info-isbn">{book.titles.isbn.$}</p>
+      <li className="recipes-nav__list-item">
+        <div className="recipes-nav__link-container">
+          <img
+            src="https://m.media-amazon.com/images/I/81rypU+zd6L._AC_UY327_FMwebp_QL65_.jpg"
+            alt={`${book.titleweb} book`}
+            className="recipes-nav__item-img"
+          />
+          <div className="recipes-nav__item-info">
+            <p className="recipes-nav__info-header">{book.titleweb}</p>
+          </div>
         </div>
-
-      </div>
+      </li>
     </a>
   );
 }
 
 export default Item;
+
+// <li className="recipes-nav__list-item">
+// <div className="recipes-nav__link-container">
+//     <img
+//       src="getWeb(amazonLink).then(() => assignValue)"
+//       alt={`${item.name} book`}
+//       className="recipes-nav__item-img"
+//     <div className="recipes-nav__item-info">
+//       <h3 className="recipes-nav__info-header">{book.titleweb}</h3>
+//       <p className="recipes-nav__info-text">{book.authorweb}</p>
+//     </div>
+//   </Link>
+// </div>
+// </li>
