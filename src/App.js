@@ -5,7 +5,6 @@ import './App.css';
 
 function App() {
   const books = useSelector((store) => store.books);
-
   return (
     <main className="App">
       <Header />

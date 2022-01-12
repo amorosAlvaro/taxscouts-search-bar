@@ -1,15 +1,9 @@
-/* eslint-disable no-unused-vars */
-// import { Router } from 'react-router-dom';
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-// import { ApiContextProvider } from 'contexts/ApiContext';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-// import { createMemoryHistory } from 'history';
-// import App from 'App';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import SearchBar from './SearchBar';
-import { getBooks } from '../../redux/actions/action.creators';
 
 describe('Given the component SearchBar', () => {
   const initialState = {};
