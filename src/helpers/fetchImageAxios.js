@@ -9,7 +9,7 @@ async function fetchImageAxios(url) {
   const element = document.createElement('div');
   element.innerHTML = stringData;
   const image = element.getElementsByClassName('s-image');
-  if (image) {
+  if (image[0]) {
     return image[0].src;
   }
   return undefined;

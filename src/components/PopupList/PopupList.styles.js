@@ -38,8 +38,8 @@ font-family: 'Sintony', sans-serif;
 margin-bottom: 1rem;`;
 
 const BooksNavItemImg = styled.img`   
-    height: 4rem;
-    width: 4rem;`;
+    height: 100%;
+    width: 6rem;`;
 
 export {
   BooksNav, BooksNavList, AmazonLink, BooksNavListItem, BooksNavItemContainer,

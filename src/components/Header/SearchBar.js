@@ -17,7 +17,7 @@ function Search() {
 
   useEffect(() => {
     const delaySearch = setTimeout(() => {
-      if (input.length > 1) {
+      if (input.length) {
         dispatch(getBooks(input));
       } else {
         dispatch(resetBooks());

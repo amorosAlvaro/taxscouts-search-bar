@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable max-len */
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable no-debugger */
@@ -17,8 +18,6 @@ function Item({ book }) {
   }
   const amazonLink = `https://www.amazon.com/s?i=stripbooks&rh=p_66%3A${bookIsbn}&s=relevanceexprank&Adv-Srch-Books-Submit.x=21&Adv-Srch-Books-Submit.y=7&unfiltered=1&ref=sr_adv_b`;
 
-  // const getLink = () => fetchImageAxios(amazonLink).then((data) => data);
-
   const [link, setLink] = useState('');
 
   useEffect(() => {
@@ -26,23 +25,28 @@ function Item({ book }) {
   }, []);
 
   return (
-    <AmazonLink
-      href={amazonLink}
-      target="_blank"
-    >
-      <BooksNavListItem>
-        <BooksNavItemContainer>
-          <BooksNavItemImg
-            src={link || 'https://m.media-amazon.com/images/I/51Z+ebJE1CL._AC_UY218_.jpg'}
-            alt={`${book.titleweb} book`}
-            className="recipes-nav__item-img"
-          />
-          <BooksNavItemInfo>
-            <BooksNavInfoHeader>{book.titleweb}</BooksNavInfoHeader>
-          </BooksNavItemInfo>
-        </BooksNavItemContainer>
-      </BooksNavListItem>
-    </AmazonLink>
+    <>
+      {link && (
+      <AmazonLink
+        href={amazonLink}
+        target="_blank"
+      >
+        <BooksNavListItem>
+          <BooksNavItemContainer>
+            <BooksNavItemImg
+              src={link}
+              alt={`${book.titleweb} book`}
+              className="recipes-nav__item-img"
+            />
+            <BooksNavItemInfo>
+              <BooksNavInfoHeader>{book.titleweb}</BooksNavInfoHeader>
+            </BooksNavItemInfo>
+          </BooksNavItemContainer>
+        </BooksNavListItem>
+      </AmazonLink>
+      ) }
+    </>
+
   );
 }
 
