@@ -1,41 +1,49 @@
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable no-debugger */
-import React from 'react';
-// import fetchImageAxios from '../../helpers/fetchImageAxios';
+/* eslint-disable react/jsx-no-useless-fragment */
+import { useState, useEffect } from 'react';
+import fetchImageAxios from '../../services/fetchImageAxios';
 import {
   AmazonLink, BooksNavListItem, BooksNavItemContainer, BooksNavItemInfo, BooksNavInfoHeader,
   BooksNavItemImg
 } from './PopupList.styles';
 
 function Item({ book }) {
-  const bookIsbn = book.titles.isbn.$;
-
+  let bookIsbn;
+  if (Array.isArray(book.titles.isbn)) {
+    bookIsbn = book.titles.isbn[0].$;
+  } else {
+    bookIsbn = book.titles.isbn.$;
+  }
   const amazonLink = `https://www.amazon.com/s?i=stripbooks&rh=p_66%3A${bookIsbn}&s=relevanceexprank&Adv-Srch-Books-Submit.x=21&Adv-Srch-Books-Submit.y=7&unfiltered=1&ref=sr_adv_b`;
 
-  // const amazonLink2 = `https://www.amazon.com/s?k=${bookIsbn}&i=stripbooks-intl-ship&crid=3LIIXXF9V26CK&sprefix=${bookIsbn}%2Cstripbooks-intl-ship%2C272&ref=nb_sb_noss`;
-  // const testLink = getWeb(amazonLink).then(() => {
-  //   console.log(assignValue);
-  //   return assignValue;
-  // });
+  const [link, setLink] = useState('');
+
+  useEffect(() => {
+    fetchImageAxios(amazonLink).then((data) => setLink(data));
+  }, []);
 
   return (
-    <AmazonLink
-      href={amazonLink}
-      target="_blank"
-    >
-      <BooksNavListItem>
-        <BooksNavItemContainer>
-          <BooksNavItemImg
-            src="https://m.media-amazon.com/images/I/81rypU+zd6L._AC_UY327_FMwebp_QL65_.jpg"
-            alt={`${book.titleweb} book`}
-            className="recipes-nav__item-img"
-          />
-          <BooksNavItemInfo>
-            <BooksNavInfoHeader className="recipes-nav__info-header">{book.titleweb}</BooksNavInfoHeader>
-          </BooksNavItemInfo>
-        </BooksNavItemContainer>
-      </BooksNavListItem>
-    </AmazonLink>
+    <>
+      {link && (
+      <AmazonLink
+        href={amazonLink}
+        target="_blank"
+      >
+        <BooksNavListItem>
+          <BooksNavItemContainer>
+            <BooksNavItemImg
+              src={link}
+              alt={`${book.titleweb} book`}
+              className="recipes-nav__item-img"
+            />
+            <BooksNavItemInfo>
+              <BooksNavInfoHeader>{book.titleweb}</BooksNavInfoHeader>
+            </BooksNavItemInfo>
+          </BooksNavItemContainer>
+        </BooksNavListItem>
+      </AmazonLink>
+      ) }
+    </>
+
   );
 }
 

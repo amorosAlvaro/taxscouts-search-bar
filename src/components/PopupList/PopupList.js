@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Item from './Item';
@@ -9,8 +10,8 @@ function PopupList() {
   return (
     <BooksNav>
       <BooksNavList>
-        {books.map((book) => (
-          <Item key={book.authorweb} book={book} />
+        {books.map((book, i) => (
+          <Item key={`${book.authorweb}${i}`} book={book} />
         ))}
       </BooksNavList>
     </BooksNav>

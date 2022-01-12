@@ -10,7 +10,7 @@ function App() {
   return (
     <main className="App">
       <Header />
-      {books.length > 2 ? <PopupList /> : <h3>PopUp List</h3>}
+      {books.length && (<PopupList />) }
     </main>
   );
 }

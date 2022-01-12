@@ -1,7 +1,7 @@
 /* eslint-disable no-shadow */
 /* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import searchIcon from '../../assets/magnifying-glass.svg';
 import { getBooks, resetBooks } from '../../redux/actions/action.creators';
@@ -15,20 +15,21 @@ function Search() {
 
   const dispatch = useDispatch();
 
-  const handleChange = (e, input) => {
-    if (input.length > 1) {
-      e.preventDefault();
-      dispatch(getBooks(input));
-    } else {
-      dispatch(resetBooks());
-    }
-  };
+  useEffect(() => {
+    const delaySearch = setTimeout(() => {
+      if (input.length) {
+        dispatch(getBooks(input));
+      } else {
+        dispatch(resetBooks());
+      }
+    }, 500);
+
+    return () => clearTimeout(delaySearch);
+  }, [input]);
 
   return (
     <SearchContainer>
-      <SearchContainerForm
-        onChange={(e) => handleChange(e, input)}
-      >
+      <SearchContainerForm>
         <SearchContainerFormInput
           value={input}
           autoComplete="off"
