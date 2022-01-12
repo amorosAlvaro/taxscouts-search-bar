@@ -1,6 +1,3 @@
-/* eslint-disable no-shadow */
-/* eslint-disable react/button-has-type */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import searchIcon from '../../assets/magnifying-glass.svg';
@@ -10,7 +7,7 @@ import {
   SearchContainerFormDelete, SearchContainerFormSubmit
 } from './SearchBar.styles';
 
-function Search() {
+function SearchBar() {
   const [input, setInput] = useState('');
 
   const dispatch = useDispatch();
@@ -22,7 +19,7 @@ function Search() {
       } else {
         dispatch(resetBooks());
       }
-    }, 500);
+    }, 200);
 
     return () => clearTimeout(delaySearch);
   }, [input]);
@@ -54,4 +51,4 @@ function Search() {
   );
 }
 
-export default Search;
+export default SearchBar;

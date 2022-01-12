@@ -9,7 +9,7 @@ const SearchContainer = styled.section`
   background: grey;
   opacity: 0.3;
   border: 10rem;
-  padding-right: 2rem;
+  padding-right: 8rem;
   `;
 
 const SearchContainerForm = styled.form`
@@ -17,7 +17,7 @@ const SearchContainerForm = styled.form`
   align-items: center;
   z-index: 2;
   height: 2.5rem;
-  width: 30rem;
+  width: 28rem;
   background-color: white;
   border-radius: 10rem;
   opacity: 1;

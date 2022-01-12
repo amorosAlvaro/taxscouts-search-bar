@@ -1,8 +1,8 @@
-import Search from './SearchBar';
+import SearchBar from './SearchBar';
 
 function Header() {
   return (
-    <Search />
+    <SearchBar />
   );
 }
 

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const BooksNav = styled.nav`
     display: flex;
     justify-content: right;
-    padding-right: 2rem;`;
+    padding-right: 8rem;`;
 
 const BooksNavList = styled.ul`
     display: flex;
@@ -39,7 +39,7 @@ margin-bottom: 1rem;`;
 
 const BooksNavItemImg = styled.img`   
     height: 100%;
-    width: 6rem;`;
+    width: 4rem;`;
 
 export {
   BooksNav, BooksNavList, AmazonLink, BooksNavListItem, BooksNavItemContainer,
