@@ -48,17 +48,3 @@ function Item({ book }) {
 }
 
 export default Item;
-
-// <li className="recipes-nav__list-item">
-// <div className="recipes-nav__link-container">
-//     <img
-//       src="getWeb(amazonLink).then(() => assignValue)"
-//       alt={`${item.name} book`}
-//       className="recipes-nav__item-img"
-//     <div className="recipes-nav__item-info">
-//       <h3 className="recipes-nav__info-header">{book.titleweb}</h3>
-//       <p className="recipes-nav__info-text">{book.authorweb}</p>
-//     </div>
-//   </Link>
-// </div>
-// </li>
