@@ -1,9 +1,6 @@
 /* eslint-disable react/jsx-no-useless-fragment */
-/* eslint-disable max-len */
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable no-debugger */
 import { useState, useEffect } from 'react';
-import fetchImageAxios from '../../helpers/fetchImageAxios';
+import fetchImageAxios from '../../services/fetchImageAxios';
 import {
   AmazonLink, BooksNavListItem, BooksNavItemContainer, BooksNavItemInfo, BooksNavInfoHeader,
   BooksNavItemImg
